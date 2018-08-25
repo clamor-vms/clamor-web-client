@@ -2,13 +2,13 @@ import { createStyles } from "@material-ui/core";
 import { ITheme } from "./AppStyles.interface";
 
 const drawerWidth = 240;
-export const Styles = ({ palette, spacing, transitions, mixins }: ITheme) =>
+export const Styles = (theme: ITheme) =>
   createStyles({
     root: {
       flexGrow: 1
     },
     appFrame: {
-      height: 430,
+      // height: 430,
       zIndex: 1,
       overflow: "hidden",
       position: "relative",
@@ -16,17 +16,17 @@ export const Styles = ({ palette, spacing, transitions, mixins }: ITheme) =>
       width: "100%"
     },
     appBar: {
-      position: "absolute",
-      transition: transitions.create(["margin", "width"], {
-        easing: transitions.easing.sharp,
-        duration: transitions.duration.leavingScreen
+      // position: "relative",
+      transition: theme.transitions.create(["margin", "width"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
       })
     },
     appBarShift: {
       width: `calc(100% - ${drawerWidth}px)`,
-      transition: transitions.create(["margin", "width"], {
-        easing: transitions.easing.easeOut,
-        duration: transitions.duration.enteringScreen
+      transition: theme.transitions.create(["margin", "width"], {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen
       })
     },
     "appBarShift-left": {
@@ -44,6 +44,7 @@ export const Styles = ({ palette, spacing, transitions, mixins }: ITheme) =>
     },
     drawerPaper: {
       position: "relative",
+      height: "100vmin",
       width: drawerWidth
     },
     drawerHeader: {
@@ -51,27 +52,25 @@ export const Styles = ({ palette, spacing, transitions, mixins }: ITheme) =>
       alignItems: "center",
       justifyContent: "flex-end",
       padding: "0 8px",
-      ...mixins.toolbar
+      ...theme.mixins.toolbar
     },
     content: {
-      flexGrow: 1,
-      backgroundColor: palette.background.default,
-      padding: spacing.unit * 3,
-      transition: transitions.create("margin", {
-        easing: transitions.easing.sharp,
-        duration: transitions.duration.leavingScreen
+      // flexGrow: 1,
+      width: "100%",
+      backgroundColor: theme.palette.background.default,
+      padding: theme.spacing.unit * 3,
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
       })
     },
     "content-left": {
       marginLeft: -drawerWidth
     },
-    "content-right": {
-      marginRight: -drawerWidth
-    },
     contentShift: {
-      transition: transitions.create("margin", {
-        easing: transitions.easing.easeOut,
-        duration: transitions.duration.enteringScreen
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen
       })
     },
     "contentShift-left": {

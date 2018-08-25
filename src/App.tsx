@@ -14,17 +14,13 @@ import {
 } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core";
 import * as React from "react";
-import "./App.css";
 import { Styles } from "./AppStyles";
 import { IProps } from "./App.interface";
-
-const flex: string = "flex";
+import "./App.css";
 
 class App extends React.Component<any, any> {
   public state: any = {
     anchor: "left",
-    anchorEl: null,
-    auth: true,
     open: false
   };
 
@@ -40,12 +36,19 @@ class App extends React.Component<any, any> {
     const { anchor, open } = this.state; // auth, anchorEl,
     const { theme, classes } = this.props;
     // tslint:disable-next-line:no-console
-    console.log("PROPS: ", this.props);
+    console.log("PROPS: ", this.props, theme.direction);
 
     // Drawer creation:
     const drawer = (
-      <Drawer variant="persistent" anchor={anchor} open={open} classes={{}}>
-        <div className="">
+      <Drawer
+        variant="persistent"
+        anchor={anchor}
+        open={open}
+        classes={{
+          paper: classes.drawerPaper
+        }}
+      >
+        <div className={classes.drawerHeader}>
           <IconButton onClick={this.handleDrawerClose}>
             {theme.direction === "rtl" ? <ChevronRight /> : <ChevronLeft />}
           </IconButton>
@@ -57,38 +60,54 @@ class App extends React.Component<any, any> {
       </Drawer>
     );
 
-    let before = null;
-    let after = null;
-
-    if (anchor === "left") {
-      before = drawer;
-    } else {
-      after = drawer;
-    }
-
     return (
       <div className="App">
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              className={classNames(classes.menuButton, open && classes.hide)}
-              color="inherit"
-              onClick={this.handleDrawerOpen}
-              aria-label="Open drawer"
+        <div className={classes.root}>
+          <div className={classes.appFrame}>
+            <AppBar
+              className={classNames(classes.appBar, {
+                [classes.appBarShift]: open,
+                [classes[`appBarShift-${anchor}`]]: open
+              })}
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="title" color="inherit" className={flex}>
-              Skaioskit
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        {before}
-        <p className="App-intro">
-          {/* core app w/ router here */}
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        {after}
+              <Toolbar disableGutters={!open}>
+                <IconButton
+                  color="inherit"
+                  aria-label="Open drawer"
+                  onClick={this.handleDrawerOpen}
+                  className={classNames(
+                    classes.menuButton,
+                    open && classes.hide
+                  )}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography variant="title" color="inherit" noWrap={true}>
+                  Skaioskit
+                </Typography>
+              </Toolbar>
+            </AppBar>
+            {drawer}
+            <div
+              className={classNames(
+                classes.content,
+                classes[`content-${anchor}`],
+                {
+                  [classes.contentShift]: open,
+                  [classes[`contentShift-${anchor}`]]: open
+                }
+              )}
+            >
+              <div className={classes.drawerHeader} />
+              {/* Core app w/ Routes */}
+              <Typography>
+                {"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
+                  " " +
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
+              </Typography>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
