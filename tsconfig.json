@@ -18,6 +18,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true
   },
+  "typeRoots": ["lib"],
   "exclude": [
     "node_modules",
     "build",
