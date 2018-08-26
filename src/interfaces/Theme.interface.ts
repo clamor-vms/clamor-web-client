@@ -4,4 +4,5 @@ export interface ITheme {
   mixins: any;
   palette: any;
   spacing: any;
+  direction: any;
 }

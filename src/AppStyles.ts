@@ -1,5 +1,5 @@
 import { createStyles } from "@material-ui/core";
-import { ITheme } from "./AppStyles.interface";
+import { ITheme } from "./interfaces/Theme.interface";
 
 const drawerWidth = 240;
 export const Styles = (theme: ITheme) =>
