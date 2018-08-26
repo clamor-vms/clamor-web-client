@@ -38,14 +38,3 @@ const DrawerComponent = ({
 );
 
 export default DrawerComponent;
-// export default withStyles(Styles, { withTheme: true })(
-//   ({ theme, classes, open, anchor, handleDrawerClose }: IDrawerComponent) => (
-//     <DrawerComponent
-//       open={open}
-//       anchor={anchor}
-//       theme={theme}
-//       classes={classes}
-//       handleDrawerClose={handleDrawerClose}
-//     />
-//   )
-// );

@@ -41,13 +41,3 @@ export const Header = ({
 );
 
 export default Header;
-// export default withStyles(Styles, { withTheme: true })(
-//   ({ theme, classes, anchor, handleDrawerOpen }: IHeader) => (
-//     <Header
-//       theme={theme}
-//       anchor={anchor}
-//       classes={classes}
-//       handleDrawerOpen={handleDrawerOpen}
-//     />
-//   )
-// );
