@@ -17,8 +17,6 @@ const DrawerComponent = ({
   classes,
   handleDrawerClose
 }: IDrawerComponent) => (
-  // tslint:disable-next-line:no-console
-  // console.log(theme, classes),
   <Drawer
     variant="persistent"
     anchor={anchor}

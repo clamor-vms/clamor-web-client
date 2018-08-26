@@ -9,31 +9,35 @@ import classNames from "classnames";
 import { IHeader } from "./Header.interface";
 
 export const Header = ({
-  theme,
   anchor,
   classes,
-  handleDrawerOpen
+  handleDrawerOpen,
+  open
 }: IHeader) => (
-  <AppBar
-    className={classNames(classes.appBar, {
-      [classes.appBarShift]: open,
-      [classes[`appBarShift-${anchor}`]]: open
-    })}
-  >
-    <Toolbar disableGutters={!open}>
-      <IconButton
-        color="inherit"
-        aria-label="Open drawer"
-        onClick={handleDrawerOpen}
-        className={classNames(classes.menuButton, open && classes.hide)}
-      >
-        <MenuIcon />
-      </IconButton>
-      <Typography variant="title" color="inherit" noWrap={true}>
-        Skaioskit
-      </Typography>
-    </Toolbar>
-  </AppBar>
+  // tslint:disable-next-line:no-console
+  console.log(classes, open, anchor),
+  (
+    <AppBar
+      className={classNames(classes.appBar, {
+        [classes.appBarShift]: open,
+        [classes[`appBarShift-${anchor}`]]: open
+      })}
+    >
+      <Toolbar disableGutters={!open}>
+        <IconButton
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={handleDrawerOpen}
+          className={classNames(classes.menuButton, open && classes.hide)}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="title" color="inherit" noWrap={true}>
+          Skaioskit
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  )
 );
 
 export default Header;
