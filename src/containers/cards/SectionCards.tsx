@@ -26,6 +26,6 @@ export default class SectionCards extends React.Component<
 
   public render() {
     const { data } = this.props;
-    return <div>{this.generateCards(data)}</div>;
+    return this.generateCards(data);
   }
 }
