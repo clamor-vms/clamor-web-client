@@ -4,7 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import SettingsIcon from "@material-ui/icons/Settings";
-import HowToVoteIcon from "@material-ui/icons/HowToVote";
+// import HowToVoteIcon from "@material-ui/icons/HowToVote";
 import PeopleIcon from "@material-ui/icons/People";
 import BusinessIcon from "@material-ui/icons/Business";
 import HomeIcon from "@material-ui/icons/Home";
@@ -29,6 +29,24 @@ export const NavigationList = () => (
       </ListItem>
     </NavLink>
 
+    <NavLink to="/contacts">
+      <ListItem button={true}>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Contacts" />
+      </ListItem>
+    </NavLink>
+
+    {/* <NavLink to="/operations">
+      <ListItem button={true}>
+        <ListItemIcon>
+          <BusinessIcon />
+        </ListItemIcon>
+        <ListItemText primary="Operations" />
+      </ListItem>
+    </NavLink>
+
     <NavLink to="/campaigns">
       <ListItem button={true}>
         <ListItemIcon>
@@ -45,7 +63,7 @@ export const NavigationList = () => (
         </ListItemIcon>
         <ListItemText primary="Tasks" />
       </ListItem>
-    </NavLink>
+    </NavLink> */}
 
     <NavLink to="/settings">
       <ListItem button={true}>

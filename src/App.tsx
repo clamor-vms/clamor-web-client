@@ -4,8 +4,8 @@ import { withStyles } from "@material-ui/core";
 import classNames from "classnames";
 // Custom Imports
 import AppRouter from "./router/AppRouter";
-import DrawerComponent from "./router/DrawerComponent";
-import Header from "./router/Header";
+import DrawerComponent from "./router/drawer/DrawerComponent";
+import Header from "./router/header/Header";
 import { Styles } from "./AppStyles";
 import { IProps } from "./App.interface";
 import "./App.css";

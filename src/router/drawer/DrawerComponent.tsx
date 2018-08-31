@@ -6,7 +6,7 @@ import List from "@material-ui/core/ListItem";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 // import { withStyles } from "@material-ui/core";
 // Custom Imports
-import { NavigationList } from "./NavigationList";
+import { NavigationList } from "../NavigationList";
 import { IDrawerComponent } from "./Drawer.interface";
 // import { Styles } from "../AppStyles";
 

@@ -1,4 +1,4 @@
-import { ITheme } from "../interfaces/Theme.interface";
+import { ITheme } from "../../interfaces/Theme.interface";
 
 type anchor = "left" | "bottom" | "right" | undefined;
 type HandleDrawerClose = (arg: any) => void;
