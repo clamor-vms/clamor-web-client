@@ -25,7 +25,7 @@ export const NavigationList = () => (
         <ListItemIcon>
           <BusinessIcon />
         </ListItemIcon>
-        <ListItemText primary="Operations" />
+        <ListItemText primary="Manage" />
       </ListItem>
     </NavLink>
 
