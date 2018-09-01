@@ -6,6 +6,9 @@ import {
 } from "./SectionCards.interface";
 import { ICardData } from "./card/SectionCard.interface";
 
+/* 
+  Section cards component returns fragment of Section card Material-UI components.
+*/
 export default class SectionCards extends React.Component<
   ISectionCardsProps,
   ISectionCardsState
