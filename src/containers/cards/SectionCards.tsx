@@ -21,15 +21,24 @@ export default class SectionCards extends React.Component<
     };
   }
 
-  public generateCards(cardData: ICardData[]) {
-    return cardData.map(({ id, title, description }) => (
-      <SectionCard key={id} id={id} title={title} description={description} />
+  public generateCards(cardData: ICardData[] = []) {
+    return cardData.map(({ id, title, description, url, type }) => (
+      <SectionCard
+        id={id}
+        key={id}
+        url={url}
+        type={type}
+        title={title}
+        description={description}
+      />
     ));
   }
 
   public render() {
     const { data } = this.props;
-    if (!data) return <div />;
+    if (!data) {
+      return <div />;
+    }
     return this.generateCards(data);
   }
 }

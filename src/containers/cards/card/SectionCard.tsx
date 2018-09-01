@@ -5,6 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { NavLink } from "react-router-dom";
 import { ICardData } from "./SectionCard.interface";
 
 const styles = {
@@ -29,6 +30,8 @@ const styles = {
 
 const SectionCard: React.SFC<ICardData> = ({
   id,
+  url,
+  type,
   title,
   description,
   classes: { card, title: classTitle, pos }
@@ -37,18 +40,20 @@ const SectionCard: React.SFC<ICardData> = ({
     <Card key={id} className={card}>
       <CardContent>
         <Typography className={classTitle} color="textSecondary">
-          Operation
+          {type}
         </Typography>
         <Typography variant="headline" component="h2">
           {title}
         </Typography>
         <Typography className={pos} color="textSecondary">
-          Type
+          {type}
         </Typography>
         <Typography component="p">{description}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">View</Button>
+        <NavLink to={`/${url}`}>
+          <Button size="small">Manage</Button>
+        </NavLink>
       </CardActions>
     </Card>
   );
