@@ -1,7 +1,7 @@
 // tslint:disable-next-line jsx-no-lambda
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom"; // HashRouter
 import { withStyles } from "@material-ui/core";
 // Custom Imports
 import AuthService from "./auth/AuthService";
@@ -20,7 +20,16 @@ class App extends React.Component<any, any> {
   public renderAdmin() {
     const { anchor, open } = this.state;
     const { classes, theme } = this.props;
-    let resultComponent = (
+    if (!this.authService.isAuthenticated()) {
+      this.authService.login();
+      return (
+        <div>
+          <p>Redirecting to the authentication service...</p>
+        </div>
+      );
+    }
+
+    return (
       <Admin
         anchor={anchor}
         open={open}
@@ -31,20 +40,9 @@ class App extends React.Component<any, any> {
         auth={this.authService}
       />
     );
-
-    if (!this.authService.isAuthenticated()) {
-      this.authService.login();
-      resultComponent = (
-        <div>
-          <p>Redirecting to the authentication service...</p>
-        </div>
-      );
-    }
-
-    return resultComponent;
   }
 
-  public startSession(history: any) {
+  public callback(history: any) {
     this.authService.handleAuthentication(history);
     return (
       <div>
@@ -63,17 +61,18 @@ class App extends React.Component<any, any> {
 
   public render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div>
-          {this.renderAdmin()}
           <Switch>
             <Route
-              path="/startSession"
-              render={({ history }: any) => this.startSession(history)}
+              exact={true}
+              path="/callback"
+              render={({ history }: any) => this.callback(history)}
             />
+            <Route path="/" render={() => this.renderAdmin()} />
           </Switch>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
