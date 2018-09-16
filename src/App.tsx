@@ -1,20 +1,57 @@
+// tslint:disable-next-line jsx-no-lambda
 import * as React from "react";
+import { Route, Switch } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
-import classNames from "classnames";
 // Custom Imports
-import AppRouter from "./router/AppRouter";
-import DrawerComponent from "./router/drawer/DrawerComponent";
-import Header from "./router/header/Header";
+import AuthService from "./auth/AuthService";
+import Admin from "./containers/admin/Admin";
 import { Styles } from "./AppStyles";
 import { IProps } from "./App.interface";
 import "./App.css";
 
 class App extends React.Component<any, any> {
+  public authService = new AuthService();
   public state: any = {
     anchor: "left",
     open: false
   };
+
+  public renderAdmin() {
+    const { anchor, open } = this.state;
+    const { classes, theme } = this.props;
+    let resultComponent = (
+      <Admin
+        anchor={anchor}
+        open={open}
+        classes={classes}
+        theme={theme}
+        handleDrawerOpen={this.handleDrawerOpen}
+        handleDrawerClose={this.handleDrawerClose}
+        auth={this.authService}
+      />
+    );
+
+    if (!this.authService.isAuthenticated()) {
+      this.authService.login();
+      resultComponent = (
+        <div>
+          <p>Redirecting to the authentication service...</p>
+        </div>
+      );
+    }
+
+    return resultComponent;
+  }
+
+  public startSession(history: any) {
+    this.authService.handleAuthentication(history);
+    return (
+      <div>
+        <p>Starting session...</p>
+      </div>
+    );
+  }
 
   public handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -25,43 +62,16 @@ class App extends React.Component<any, any> {
   };
 
   public render() {
-    const { anchor, open } = this.state;
-    const { classes, theme } = this.props;
-    // tslint:disable-next-line:no-console
     return (
       <HashRouter>
-        <div className="">
-          <div className={classes.root}>
-            <div className={classes.appFrame}>
-              <Header
-                theme={theme}
-                open={open}
-                anchor={anchor}
-                classes={classes}
-                handleDrawerOpen={this.handleDrawerOpen}
-              />
-              <DrawerComponent
-                open={open}
-                theme={theme}
-                anchor={anchor}
-                classes={classes}
-                handleDrawerClose={this.handleDrawerClose}
-              />
-              <div
-                className={classNames(
-                  classes.content,
-                  classes[`content-${anchor}`],
-                  {
-                    [classes.contentShift]: open,
-                    [classes[`contentShift-${anchor}`]]: open
-                  }
-                )}
-              >
-                <div className={classes.drawerHeader} />
-                <AppRouter />
-              </div>
-            </div>
-          </div>
+        <div>
+          {this.renderAdmin()}
+          <Switch>
+            <Route
+              path="/startSession"
+              render={({ history }: any) => this.startSession(history)}
+            />
+          </Switch>
         </div>
       </HashRouter>
     );

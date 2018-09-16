@@ -1,7 +1,15 @@
 {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rules": {
+    "no-console": false,
     "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "jsx-no-lambda": false,
+    "disable-next-line jsx-no-lambda": false
+  },
+  "jsRules": {
+    "ordered-imports": false,
+    "no-console": false,
     "object-literal-sort-keys": false
   },
   "linterOptions": {

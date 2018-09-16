@@ -20,7 +20,7 @@ example auth0 config object:
 export const AUTH_CONFIG = {
   domain: "<YOUR_URL_DOMAIN>",
   clientID: "<YOUR_API_CLIENTID>",
-  redirectUri: "http://localhost:3000/startSession", // your desired redirect url defined in auth0 interface
+  redirectUri: "http://localhost:3000/#/startSession", // your desired redirect url defined in auth0 interface
   audience: "<YOUR_API_AUDIENCE_URL>"
 };
 ```
