@@ -12,6 +12,8 @@ After yarn is complete, and all packages are installed run `yarn start`. The app
 
 ## auth
 
+this application uses Auth0 services for authentication, you will need to set up a client / backend api through their interfaces for login functionality to work correctly.
+
 you will need to create a director in src/auth called `auth0config.js`.
 example auth0 config object:
 
