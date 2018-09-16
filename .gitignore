@@ -19,4 +19,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/src/auth
+/src/auth/auth0config.js
