@@ -30,7 +30,7 @@ export const Header = ({
         <MenuIcon />
       </IconButton>
       <Typography variant="title" color="inherit" noWrap={true}>
-        Skaioskit
+        Clamor
       </Typography>
     </Toolbar>
   </AppBar>

@@ -1,6 +1,6 @@
-# skaioskit client
+# clamor client
 
-A client admin interface to leverage skaioskit microservices.
+A client admin interface to leverage clamor microservices.
 
 initially generated with [create-react-app, and typescript](https://github.com/Microsoft/TypeScript-React-Starter)
 

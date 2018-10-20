@@ -10,7 +10,7 @@ import { Styles } from "./AppStyles";
 import { IProps } from "./App.interface";
 import "./App.css";
 
-import { AuthContext, CampaignAboutService } from 'skaioskit-javascript-sdk';
+import { AuthContext, CampaignAboutService } from 'clamor-javascript-sdk';
 
 const authContext = new AuthContext(
     "http://172.17.0.8",
