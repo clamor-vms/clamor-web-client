@@ -10,12 +10,13 @@ import { Styles } from "./AppStyles";
 import { IProps } from "./App.interface";
 import "./App.css";
 
-import { AuthContext, CampaignAboutService } from 'clamor-javascript-sdk';
+import { AuthContext, AuthAboutService, CampaignAboutService } from 'clamor-javascript-sdk';
 
 const authContext = new AuthContext(
-    "http://172.17.0.8",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyX2lkIjoxMn0.4VNZyedR2gTlXIR6Rwyn4VorSDhsgIXqZkCgehwpzf4"
+    "http://172.17.0.9",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyX2lkIjoxfQ.cyDD9MbG4ABg_sYnCbMRON43DmWMLxSni81fZBBYdjs"
 );
+const authAboutService = new AuthAboutService(authContext);
 const campaignAboutService = new CampaignAboutService(authContext);
 
 class App extends React.Component<any, any> {
@@ -36,6 +37,10 @@ class App extends React.Component<any, any> {
         </div>
       );
     } else {
+        authAboutService.GetAuthServiceInfo()
+            .then((x) => {
+                console.log(x);
+            });
         campaignAboutService.GetCampaignServiceInfo()
             .then((x) => {
                 console.log(x);
