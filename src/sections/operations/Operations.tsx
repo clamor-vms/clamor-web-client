@@ -1,5 +1,5 @@
 import * as React from "react";
-import SectionCards from "@/containers/cards/SectionCards";
+import SectionCards from "@/components/cards/SectionCards";
 import "./operations.css";
 
 /* Mock data for interactive mockup */

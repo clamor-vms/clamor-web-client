@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import Operations, { Operation } from "@/containers/operations/index";
+import Operations, { Operation } from "@/sections/operations/index";
 
 const Home = () => <div>Home Route</div>;
 const Contacts = () => <div>Contacts Route</div>;
