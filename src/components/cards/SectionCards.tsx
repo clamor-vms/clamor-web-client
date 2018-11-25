@@ -1,10 +1,10 @@
 import * as React from "react";
-import SectionCard from "./card/SectionCard";
+import SectionCard from "./sectionCard/SectionCard";
 import {
   ISectionCardsProps,
   ISectionCardsState
 } from "./SectionCards.interface";
-import { ICardData } from "./card/SectionCard.interface";
+import { ICardData } from "./sectionCard/SectionCard.interface";
 
 /* 
   Section cards component returns fragment of Section card Material-UI components.
