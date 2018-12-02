@@ -10,6 +10,7 @@ import { Styles } from "./AppStyles";
 import { IProps } from "./App.interface";
 import "./App.css";
 
+/*
 import {
   AuthContext,
   AuthAboutService,
@@ -22,6 +23,7 @@ const authContext = new AuthContext(
 );
 const authAboutService = new AuthAboutService(authContext);
 const campaignAboutService = new CampaignAboutService(authContext);
+*/
 
 class App extends React.Component<any, any> {
   public authService = new AuthService();
@@ -41,12 +43,12 @@ class App extends React.Component<any, any> {
         </div>
       );
     } else {
-      authAboutService.GetAuthServiceInfo().then(x => {
+      /*authAboutService.GetAuthServiceInfo().then(x => {
         console.log(x);
       });
       campaignAboutService.GetCampaignServiceInfo().then(x => {
         console.log(x);
-      });
+      });*/
     }
 
     return (
