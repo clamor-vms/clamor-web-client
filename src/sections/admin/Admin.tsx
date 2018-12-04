@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 // local imports
-import AppRouter from "../../router/AppRouter";
+import AppRouter from "../../router/Router";
 import DrawerComponent from "../../router/drawer/DrawerComponent";
 import Header from "../../router/header/Header";
 import { IAdmin } from "./Admin.interface";

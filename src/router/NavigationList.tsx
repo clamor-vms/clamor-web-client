@@ -20,12 +20,12 @@ export const NavigationList = () => (
       </ListItem>
     </NavLink>
 
-    <NavLink to="/operations">
+    <NavLink to="/campaigns">
       <ListItem button={true}>
         <ListItemIcon>
           <BusinessIcon />
         </ListItemIcon>
-        <ListItemText primary="Manage" />
+        <ListItemText primary="Campaigns" />
       </ListItem>
     </NavLink>
 
