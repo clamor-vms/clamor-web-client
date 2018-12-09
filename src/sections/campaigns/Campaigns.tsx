@@ -1,19 +1,19 @@
 import * as React from "react";
-import Fetch from "../../services/Fetch";
+import CampaignService from "../../services/CampaignService";
 
 // todo :
 // add user context && campaign service/context to make fetch call.
-export default class Campaigns extends React.Component {
+export default class Campaigns extends React.Component<any, any> {
   public state: any = {};
 
   public render() {
     return (
-      <Fetch url="http://127.0.0.1/about">
-        {response => (
+      <CampaignService route="about" method="GET">
+        {(response: any) => (
           console.log("Campaign Fetch: ", response),
-          <div>campaigns component</div>
+          <div>Campaigns component</div>
         )}
-      </Fetch>
+      </CampaignService>
     );
   }
 }

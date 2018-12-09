@@ -5,25 +5,11 @@ import { BrowserRouter } from "react-router-dom"; // HashRouter
 import { withStyles } from "@material-ui/core";
 // Custom Imports
 import AuthService from "./auth/AuthService";
+import { UserProvider } from "./contexts/UserContext";
 import Admin from "./sections/admin/Admin";
 import { Styles } from "./AppStyles";
 import { IProps } from "./App.interface";
 import "./App.css";
-
-/*
-import {
-  AuthContext,
-  AuthAboutService,
-  CampaignAboutService
-} from "clamor-sdk";
-
-const authContext = new AuthContext(
-  "http://172.17.0.16",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyX2lkIjoxfQ.cyDD9MbG4ABg_sYnCbMRON43DmWMLxSni81fZBBYdjs"
-);
-const authAboutService = new AuthAboutService(authContext);
-const campaignAboutService = new CampaignAboutService(authContext);
-*/
 
 class App extends React.Component<any, any> {
   public authService = new AuthService();
@@ -42,25 +28,27 @@ class App extends React.Component<any, any> {
           <p>Redirecting to the authentication service...</p>
         </div>
       );
-    } else {
-      /*authAboutService.GetAuthServiceInfo().then(x => {
-        console.log(x);
-      });
-      campaignAboutService.GetCampaignServiceInfo().then(x => {
-        console.log(x);
-      });*/
     }
+    // todo: get & pass JWT Token from auth0 to userprovder & not hard code in JWT
+    const authToken =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1hdHRoZXcgSG91Z2giLCJpYXQiOjE1MTYyMzkwMjJ9.-Z-i2I3OBiChHQ05gHbe7Zgd6FPG1QpJOhUeDLqmo-A";
 
     return (
-      <Admin
-        anchor={anchor}
-        open={open}
-        classes={classes}
-        theme={theme}
-        handleDrawerOpen={this.handleDrawerOpen}
-        handleDrawerClose={this.handleDrawerClose}
-        auth={this.authService}
-      />
+      <UserProvider
+        value={{
+          authorization: authToken
+        }}
+      >
+        <Admin
+          anchor={anchor}
+          open={open}
+          classes={classes}
+          theme={theme}
+          handleDrawerOpen={this.handleDrawerOpen}
+          handleDrawerClose={this.handleDrawerClose}
+          auth={this.authService}
+        />
+      </UserProvider>
     );
   }
 
