@@ -26,12 +26,11 @@ export default class Fetch extends React.Component<IFetchProps, IFetchState> {
     }
     this.setState({ loading: true }, () => {
       fetch(url, {
-        method: "POST", // *GET
+        method: "GET", // *GET
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
         headers: {
           "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Bearer <hashstring>",
-          "Access-Control-Allow-Origin": "*"
+          Authorization: "Bearer <hashstring>"
         },
         body: JSON.stringify(params) // body data type must match "Content-Type" header
       })

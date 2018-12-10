@@ -8,7 +8,7 @@ export default class Campaigns extends React.Component {
 
   public render() {
     return (
-      <Fetch url="http://127.0.0.1/about">
+      <Fetch url="http://localhost/auth/about">
         {response => (
           console.log("Campaign Fetch: ", response),
           <div>campaigns component</div>
