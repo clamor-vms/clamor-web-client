@@ -20,17 +20,18 @@ export default class Fetch extends React.Component<IFetchProps, IFetchState> {
     this.callFetch();
   }
   public callFetch() {
+    const { authorization = "AUTH_NOT_SET" } = this.props;
     const { url, params, loading } = this.state;
     if (loading) {
       return;
     }
     this.setState({ loading: true }, () => {
       fetch(url, {
-        method: "GET", // *GET
+        method: "GET", // *GET POST PUT DELETE
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
         headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Bearer <hashstring>"
+          Authorization: authorization,
+          "Content-Type": "application/json; charset=utf-8"
         },
         body: JSON.stringify(params) // body data type must match "Content-Type" header
       })

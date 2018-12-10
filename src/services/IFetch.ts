@@ -11,6 +11,7 @@ type refetch = () => void;
 interface IFetchProps {
   url: string;
   children: children;
+  authorization?: string | undefined;
   params?: any; // IParams;
 }
 
