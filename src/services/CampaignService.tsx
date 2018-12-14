@@ -16,19 +16,21 @@ class CampaignService extends React.Component<ICampaignService, any> {
   // this should end up as simply /campaign
   public url = "http://127.0.0.1/campaign";
   public about = "/about";
-  public all = "/campaigns";
+  public all = "/campaign";
+  public type = "/type";
 
   // TODO: Hook up to CampaignContext for efficient store management
   public render() {
-    const { children, route = "about" } = this.props;
+    const { children, route = "about", method = "GET" } = this.props;
     return (
       <UserConsumer>
         {({ authorization }: IUserConsumer) => (
           <Fetch
+            method={method}
             authorization={authorization}
             url={`${this.url}${this[route]}`}
           >
-            {response => children && children(response)}
+            {state => children && children(state)}
           </Fetch>
         )}
       </UserConsumer>

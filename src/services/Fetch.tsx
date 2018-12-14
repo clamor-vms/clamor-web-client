@@ -20,14 +20,14 @@ export default class Fetch extends React.Component<IFetchProps, IFetchState> {
     this.callFetch();
   }
   public callFetch() {
-    const { authorization = "AUTH_NOT_SET" } = this.props;
+    const { authorization = "AUTH_NOT_SET", method } = this.props;
     const { url, params, loading } = this.state;
     if (loading) {
       return;
     }
     this.setState({ loading: true }, () => {
       fetch(url, {
-        method: "GET", // *GET POST PUT DELETE
+        method, // *GET POST PUT DELETE
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
         headers: {
           Authorization: authorization,

@@ -12,6 +12,7 @@ interface IFetchProps {
   url: string;
   children: children;
   authorization?: string | undefined;
+  method?: string | undefined;
   params?: any; // IParams;
 }
 

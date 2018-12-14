@@ -44,8 +44,11 @@ export default class Admin extends React.Component<IAdmin, any> {
                   [classes[`contentShift-${anchor}`]]: open
                 }
               )}
+              style={{
+                padding: 0
+              }}
             >
-              <div className={classes.drawerHeader} />
+              {/* <div className={classes.drawerHeader} /> */}
               <AppRouter />
             </div>
           </div>
