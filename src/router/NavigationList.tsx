@@ -38,33 +38,6 @@ export const NavigationList = () => (
       </ListItem>
     </NavLink>
 
-    {/* <NavLink to="/operations">
-      <ListItem button={true}>
-        <ListItemIcon>
-          <BusinessIcon />
-        </ListItemIcon>
-        <ListItemText primary="Operations" />
-      </ListItem>
-    </NavLink>
-
-    <NavLink to="/campaigns">
-      <ListItem button={true}>
-        <ListItemIcon>
-          <PeopleIcon />
-        </ListItemIcon>
-        <ListItemText primary="Campaigns" />
-      </ListItem>
-    </NavLink>
-
-    <NavLink to="/tasks">
-      <ListItem button={true}>
-        <ListItemIcon>
-          <HowToVoteIcon />
-        </ListItemIcon>
-        <ListItemText primary="Tasks" />
-      </ListItem>
-    </NavLink> */}
-
     <NavLink to="/settings">
       <ListItem button={true}>
         <ListItemIcon>

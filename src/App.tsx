@@ -18,7 +18,7 @@ class App extends React.Component<any, any> {
     open: false
   };
 
-  public renderAdmin() {
+  public renderAdmin(browserProps: any) {
     const { anchor, open } = this.state;
     const { classes, theme } = this.props;
     if (!this.authService.isAuthenticated()) {
@@ -40,6 +40,7 @@ class App extends React.Component<any, any> {
         }}
       >
         <Admin
+          browserProps={browserProps}
           anchor={anchor}
           open={open}
           classes={classes}
@@ -79,7 +80,7 @@ class App extends React.Component<any, any> {
               path="/callback"
               render={({ history }: any) => this.callback(history)}
             />
-            <Route path="/" render={() => this.renderAdmin()} />
+            <Route path="/" render={props => this.renderAdmin(props)} />
           </Switch>
         </div>
       </BrowserRouter>

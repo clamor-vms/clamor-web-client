@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 // local imports
-import AppRouter from "../../router/Router";
+import Router from "../../router/Router";
 import DrawerComponent from "../../router/drawer/DrawerComponent";
 import Header from "../../router/header/Header";
 import { IAdmin } from "./Admin.interface";
@@ -18,7 +18,7 @@ export default class Admin extends React.Component<IAdmin, any> {
       handleDrawerOpen
     } = this.props;
     return (
-      <div className="">
+      <React.Fragment>
         <div className={classes.root}>
           <div className={classes.appFrame}>
             <Header
@@ -48,12 +48,11 @@ export default class Admin extends React.Component<IAdmin, any> {
                 padding: 0
               }}
             >
-              {/* <div className={classes.drawerHeader} /> */}
-              <AppRouter />
+              <Router />
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

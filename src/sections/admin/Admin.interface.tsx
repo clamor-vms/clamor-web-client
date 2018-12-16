@@ -12,4 +12,6 @@ export interface IAdmin {
   handleDrawerOpen: HandleDrawerOpen;
   // auth0 auth service object
   auth: any;
+  // React-router props
+  browserProps?: any;
 }

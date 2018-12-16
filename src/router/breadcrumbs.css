@@ -1,0 +1,28 @@
+.breadcrumbs ul {
+  padding: 5px 0;
+  list-style-type: none;
+  display: flex;
+  flex-flow: row;
+  margin: 0;
+}
+
+.breadcrumbs li {
+  padding: 0 5px;
+}
+
+.breadcrumbs li a {
+  color: #3f51b5;
+  text-decoration: none;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.breadcrumbs li a svg {
+  font-size: 14px;
+}
+
+.breadcrumb-chip {
+  cursor: pointer !important;
+}
