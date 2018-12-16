@@ -1,61 +1,83 @@
 import * as React from "react";
-import { Paper, Tabs, Tab } from "@material-ui/core";
+import { Switch, Route, NavLink as Link, withRouter } from "react-router-dom";
+import { Tabs, Tab, AppBar } from "@material-ui/core"; // Paper,
+import { ICampaignsState } from "./ICampaigns";
 import CampaignService from "../../services/CampaignService";
 import "./campaigns.css";
 
+// Placeholder components
+const Dashboard = () => (
+  <React.Fragment>
+    Dashboard (Dashboard items with campaign metrics)
+  </React.Fragment>
+);
+
+const CampaignList = () => (
+  <React.Fragment>Campaigns list (Table view of all campaigns)</React.Fragment>
+);
+
+const CampaignForm = () => (
+  <React.Fragment>
+    Create Campaign (Form to create a new campaign)
+  </React.Fragment>
+);
+
 // todo :
-// Add tabs & local navigation to section. add campaign form & card display for created campaigns.
 // add ability to edit & delete created campaigns.
-export default class Campaigns extends React.Component<any, any> {
+class Campaigns extends React.Component<any, ICampaignsState> {
+  public path = this.props.match.path;
+  public all = `${this.path}/all`;
+  public create = `${this.path}/create`;
+  public routes = {
+    [this.props.match.path]: 0,
+    [`${this.path}/all`]: 1,
+    [`${this.path}/create`]: 2
+  };
+
   public state: any = {
     activeTab: 0
   };
+
+  public componentDidUpdate() {
+    if (this.state.activeTab !== this.routes[this.props.location.pathname]) {
+      this.setState({ activeTab: this.routes[this.props.location.pathname] });
+    }
+  }
 
   public handleChange = (event: any, activeTab: number) =>
     this.setState({ activeTab });
 
   public render() {
+    const { BreadCrumbList } = this.props;
     const { activeTab } = this.state;
     return (
       <CampaignService route="type" method="GET">
         {(response: any) => (
-          console.log("fetch response: ", response),
-          (
-            <React.Fragment>
-              (TODO: BREADCRUMBS COMPONENT)
-              <Paper square={true}>
-                <Tabs
-                  value={activeTab}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  onChange={this.handleChange}
-                >
-                  <Tab label="Dashboard" />
-                  <Tab label="Campaigns" />
-                  <Tab label="Create" />
-                </Tabs>
-              </Paper>
-              <div className="campaign-holder">
-                {activeTab === 0 && (
-                  <React.Fragment>
-                    Dashboard (Dashboard items with campaign metrics)
-                  </React.Fragment>
-                )}
-                {activeTab === 1 && (
-                  <React.Fragment>
-                    Campaigns list (Table view of all campaigns)
-                  </React.Fragment>
-                )}
-                {activeTab === 2 && (
-                  <React.Fragment>
-                    Create Campaign (Form to create a new campaign)
-                  </React.Fragment>
-                )}
-              </div>
-            </React.Fragment>
-          )
+          <React.Fragment>
+            <AppBar position="static">
+              <Tabs
+                className="campaign-tabs"
+                value={activeTab}
+                onChange={this.handleChange}
+              >
+                <Tab label={<Link to={this.path}>Dashboard</Link>} />
+                <Tab label={<Link to={this.all}>Campaigns</Link>} />
+                <Tab label={<Link to={this.create}>Create</Link>} />
+              </Tabs>
+            </AppBar>
+            <BreadCrumbList />
+            <div className="campaign-holder">
+              <Switch>
+                <Route path={this.path} component={Dashboard} />
+                <Route exact path={this.all} component={CampaignList} />
+                <Route exact path={this.create} component={CampaignForm} />
+              </Switch>
+            </div>
+          </React.Fragment>
         )}
       </CampaignService>
     );
   }
 }
+
+export default withRouter(Campaigns);
