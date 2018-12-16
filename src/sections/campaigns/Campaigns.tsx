@@ -1,25 +1,15 @@
 import * as React from "react";
 import { Switch, Route, NavLink as Link, withRouter } from "react-router-dom";
-import { Tabs, Tab, AppBar } from "@material-ui/core"; // Paper,
+import { Tabs, Tab, AppBar } from "@material-ui/core";
+// local
 import { ICampaignsState } from "./ICampaigns";
+import Dashboard from "./Dashboard";
+import CampaignForm from "./CampaignForm";
 import CampaignService from "../../services/CampaignService";
 import "./campaigns.css";
 
-// Placeholder components
-const Dashboard = () => (
-  <React.Fragment>
-    Dashboard (Dashboard items with campaign metrics)
-  </React.Fragment>
-);
-
 const CampaignList = () => (
   <React.Fragment>Campaigns list (Table view of all campaigns)</React.Fragment>
-);
-
-const CampaignForm = () => (
-  <React.Fragment>
-    Create Campaign (Form to create a new campaign)
-  </React.Fragment>
 );
 
 // todo :
@@ -53,27 +43,30 @@ class Campaigns extends React.Component<any, ICampaignsState> {
     return (
       <CampaignService route="type" method="GET">
         {(response: any) => (
-          <React.Fragment>
-            <AppBar position="static">
-              <Tabs
-                className="campaign-tabs"
-                value={activeTab}
-                onChange={this.handleChange}
-              >
-                <Tab label={<Link to={this.path}>Dashboard</Link>} />
-                <Tab label={<Link to={this.all}>Campaigns</Link>} />
-                <Tab label={<Link to={this.create}>Create</Link>} />
-              </Tabs>
-            </AppBar>
-            <BreadCrumbList />
-            <div className="campaign-holder">
-              <Switch>
-                <Route exact path={this.path} component={Dashboard} />
-                <Route exact path={this.all} component={CampaignList} />
-                <Route exact path={this.create} component={CampaignForm} />
-              </Switch>
-            </div>
-          </React.Fragment>
+          console.log(response),
+          (
+            <React.Fragment>
+              <AppBar position="static">
+                <Tabs
+                  className="campaign-tabs"
+                  value={activeTab}
+                  onChange={this.handleChange}
+                >
+                  <Tab label={<Link to={this.path}>Dashboard</Link>} />
+                  <Tab label={<Link to={this.all}>Campaigns</Link>} />
+                  <Tab label={<Link to={this.create}>Create</Link>} />
+                </Tabs>
+              </AppBar>
+              <BreadCrumbList />
+              <div className="campaign-holder">
+                <Switch>
+                  <Route exact path={this.path} component={Dashboard} />
+                  <Route exact path={this.all} component={CampaignList} />
+                  <Route exact path={this.create} component={CampaignForm} />
+                </Switch>
+              </div>
+            </React.Fragment>
+          )
         )}
       </CampaignService>
     );

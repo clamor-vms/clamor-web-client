@@ -1,12 +1,10 @@
 type children = (data: IFetchState) => any;
 
+// GET Request
 type refetch = () => void;
 
-// interface IParams {}
-
-// interface IRequestData {}
-
-// interface IErrors {}
+// POST / PUT / DELETE / GET Requests
+type mutation = (method: string, body: any) => void;
 
 interface IFetchProps {
   url: string;
@@ -23,6 +21,7 @@ interface IFetchState {
   data: any; // IRequestData | undefined;
   errors: any; // IErrors | undefined;
   refetch: refetch;
+  mutation: mutation;
 }
 
 export { IFetchProps, IFetchState };

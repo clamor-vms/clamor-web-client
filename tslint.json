@@ -6,7 +6,8 @@
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,
     "jsx-boolean-value": false,
-    "disable-next-line jsx-no-lambda": false
+    "disable-next-line jsx-no-lambda": false,
+    "no-empty": false
   },
   "jsRules": {
     "ordered-imports": false,
