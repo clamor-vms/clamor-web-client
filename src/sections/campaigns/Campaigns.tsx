@@ -68,7 +68,7 @@ class Campaigns extends React.Component<any, ICampaignsState> {
             <BreadCrumbList />
             <div className="campaign-holder">
               <Switch>
-                <Route path={this.path} component={Dashboard} />
+                <Route exact path={this.path} component={Dashboard} />
                 <Route exact path={this.all} component={CampaignList} />
                 <Route exact path={this.create} component={CampaignForm} />
               </Switch>
