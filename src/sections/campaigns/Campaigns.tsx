@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Switch, Route, NavLink as Link, withRouter } from "react-router-dom";
-import { Tabs, Tab, AppBar } from "@material-ui/core";
+import { Tabs, Tab, Paper } from "@material-ui/core";
 // local
 import { ICampaignsState } from "./ICampaigns";
 import Dashboard from "./Dashboard";
@@ -46,7 +46,7 @@ class Campaigns extends React.Component<any, ICampaignsState> {
           console.log(response),
           (
             <React.Fragment>
-              <AppBar position="static">
+              <Paper>
                 <Tabs
                   className="campaign-tabs"
                   value={activeTab}
@@ -56,7 +56,7 @@ class Campaigns extends React.Component<any, ICampaignsState> {
                   <Tab label={<Link to={this.all}>Campaigns</Link>} />
                   <Tab label={<Link to={this.create}>Create</Link>} />
                 </Tabs>
-              </AppBar>
+              </Paper>
               <BreadCrumbList />
               <div className="campaign-holder">
                 <Switch>

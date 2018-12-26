@@ -4,6 +4,10 @@
 
 .campaign-tabs a {
   text-decoration: none;
-  color: #fff;
   padding: 15px 25px;
 }
+
+.campaign-tabs a {
+  color: #333;
+}
+
